@@ -6,6 +6,7 @@ Workflow for converting vocabulary images into Anki flashcards.
 
 ## Prerequisites
 
+Refer to `anki-connect-wsl-setup.md` for setup details. Instructions tailored to WSL.
 - Anki open on Windows with AnkiConnect add-on installed (code: `2055492159`)
 - WSL with mirrored networking (`C:\Users\<you>\.wslconfig` contains `networkingMode=mirrored`)
 - `requests` installed: `pip install requests`
