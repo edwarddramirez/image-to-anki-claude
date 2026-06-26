@@ -1,7 +1,6 @@
 # Anki Vocab Upload Workflow
 
 Workflow for converting vocabulary images into Anki flashcards.
-Full setup reference: https://claude.ai/chat/164dc35d-7a65-445e-ab9e-003e62ca373d
 
 ---
 
