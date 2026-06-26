@@ -1,6 +1,6 @@
 # Anki Vocab Upload Workflow
 
-Workflow for converting vocabulary images into Anki flashcards.
+Workflow for converting vocabulary images into Anki flashcards. Tailored specifically for vocabulary in `Teach Yourself Hindi` text.
 
 ---
 
