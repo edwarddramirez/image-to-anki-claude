@@ -32,7 +32,8 @@ class AnkiClient:
         response.raise_for_status()
 
         result = response.json()
-        if result.get("error"):
+        # Only raise for top-level errors — addNotes returns per-note errors in result list
+        if result.get("error") and not isinstance(result.get("result"), list):
             raise RuntimeError(f"AnkiConnect error: {result['error']}")
 
         return result["result"]
@@ -65,6 +66,10 @@ class AnkiClient:
                 "Back": card.back,
             },
             "tags": card.tags or [],
+            "options": {
+                "allowDuplicate": False,
+                "duplicateScope": "deck",
+            },
         }
 
         note_id = self._invoke("addNote", note=note)
@@ -145,12 +150,17 @@ class AnkiClient:
                     "Back": card.back,
                 },
                 "tags": card.tags or [],
+                "options": {
+                    "allowDuplicate": False,
+                    "duplicateScope": "deck",
+                },
             }
             for card in cards
         ]
 
-        note_ids = self._invoke("addNotes", notes=notes)
-        return note_ids
+        results = self._invoke("addNotes", notes=notes)
+        # results is a list where each entry is either a note ID (int) or None (duplicate/error)
+        return results
 
 
 # --- Example usage ---
